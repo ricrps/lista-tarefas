@@ -1,6 +1,5 @@
 <footer>
-    <p>&copy; Cecília Aparecida da Silva Melo</p>
+    <div class="container">
+        <p>&copy; Cecília Aparecida da Silva Melo</p>
+    </div>    
 </footer>
-</body>
-
-</html>

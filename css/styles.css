@@ -1,21 +1,149 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: #260139;
+  font-family: 'Montserrat', sans-serif;
 }
 
-header {
-    min-height: 20px;
-    background-color: #000000;
+h1, h2 {
+    margin-top: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 24px;
+    color: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;    
+}
+
+header, footer {    
+    background-color: #f3ebff;
+    border-bottom: 1px solid #e1d0f5;
 }
 
 main {
     flex: 1;
 }
 
-footer {
-    min-height: 20px;
-    background-color: #000000;
+header {
+    padding: 16px 0px;
 }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #6200ee;
+    text-decoration: underline solid #6200ee 3px;
+}
+
+footer {
+    padding: 8px 0px;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+
+
+/* LOGIN PAGE ========================================================= */
+.login-page main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.login-page .form-container {    
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 480px;   
+}
+
+.login-page .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.btn-entrar {
+    width: 100%;
+    padding: 12px;
+    background-color: #6200ee;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.3s ease;
+    margin-bottom: 12px;
+}
+
+.btn-entrar:hover {
+    background-color: #4b00b8;
+}
+
+.login-page .msg-erro {
+    background-color: #fdeaea;
+    color: #b71c1c;           
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #f5c6cb;
+}
+
+.login-page .msg-erro .material-symbols-outlined {
+    font-size: 16px;
+}
+
+.login-page a {
+    font-size: 0.9rem; 
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+}
+
+/* ======================================================== */

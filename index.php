@@ -1,3 +1,7 @@
+<?php 
+require_once 'controllers/AutenticacaoController.php'; 
+AutenticacaoController::verificarAcesso(); 
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>

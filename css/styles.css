@@ -24,9 +24,10 @@ h1, h2 {
 
 .material-symbols-outlined {
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 16;
     color: inherit;
 }
+
 
 p {
     margin: 0;
@@ -61,12 +62,27 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+nav .links, nav .usuario {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     font-weight: bold;
 }
+
 
 nav a:hover {
     color: #6200ee;
     text-decoration: underline solid #6200ee 3px;
+}
+
+nav .usuario {
+    background-color: rgba(255,255,255,0.5);
+    padding: 6px 16px;
+    border-radius: 50px;     
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 footer {
@@ -78,6 +94,35 @@ footer p {
     font-size: 0.8rem;
 }
 
+
+.mensagem {      
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;    
+}
+
+.mensagem.erro {
+    background-color: #fdeaea;
+    color: #b71c1c;
+    border-color: #f5c6cb;
+}
+
+.mensagem.sucesso {
+    background-color: #eafaf1; 
+    color: #27ae60;           
+    border-color: #d4efdf;
+}
+
+.mensagem .material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 20px;
+    color: inherit;
+}
 
 
 /* LOGIN PAGE ========================================================= */
@@ -119,24 +164,6 @@ footer p {
 
 .btn-entrar:hover {
     background-color: #4b00b8;
-}
-
-.login-page .msg-erro {
-    background-color: #fdeaea;
-    color: #b71c1c;           
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid #f5c6cb;
-}
-
-.login-page .msg-erro .material-symbols-outlined {
-    font-size: 16px;
 }
 
 .login-page a {

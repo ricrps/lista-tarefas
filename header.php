@@ -1,8 +1,24 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <header>
     <div class="container">
         <nav>
-            <a href="/">Home</a>
-            <a href="/"><span class="material-symbols-outlined">logout</span></a>
+            <div class="links">
+                <a href="index.php">Home</a>
+                <a href="index.php">Nova</a>
+            </div>
+
+            <div class="usuario">
+                <?php if (isset($_SESSION['usuario_nome'])): ?>
+                    <span><?php echo $_SESSION['usuario_nome']; ?></span>
+                    <a href="controllers/AutenticacaoController.php?acao=logout" title="Sair">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
+                <?php endif; ?>
+            </div>
         </nav>
     </div>
 </header>

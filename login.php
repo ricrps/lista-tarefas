@@ -15,7 +15,7 @@
     <title>Lista de tarefas - Login</title>
 </head>
 
-<body class="login-page">
+<body class="login-page formulario-page">
     <main class="container login">
         <h1>Lista de Tarefas</h1>
         <div class="form-container">
@@ -52,8 +52,8 @@
                     <input type="password" id="senha" name="senha" required placeholder="******">
                 </div>
 
-                <button type="submit" class="btn-entrar">Entrar</button>
-                <a href="cadastro.php">Cadastrar</a>
+                <button type="submit" class="botao-principal">Entrar</button>
+                <a class="link" href="usuario-cadastro.php">Cadastrar</a>
             </form>
         </div>
     </main>

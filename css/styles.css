@@ -3,16 +3,17 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: #260139;
-  font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #260139;
+    font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin-top: 0;
 }
 
@@ -24,7 +25,7 @@ h1, h2 {
 
 .material-symbols-outlined {
     vertical-align: middle;
-    font-size: 16;
+    font-size: 16px;
     color: inherit;
 }
 
@@ -42,10 +43,11 @@ p {
 
 a {
     text-decoration: none;
-    color: currentColor;    
+    color: currentColor;
 }
 
-header, footer {    
+header,
+footer {
     background-color: #f3ebff;
     border-bottom: 1px solid #e1d0f5;
 }
@@ -64,7 +66,8 @@ nav {
     align-items: center;
 }
 
-nav .links, nav .usuario {
+nav .links,
+nav .usuario {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -78,11 +81,15 @@ nav a:hover {
 }
 
 nav .usuario {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 6px 16px;
-    border-radius: 50px;     
+    border-radius: 50px;
     gap: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+nav .usuario .material-symbols-outlined {
+    font-size: 20px;
 }
 
 footer {
@@ -95,7 +102,7 @@ footer p {
 }
 
 
-.mensagem {      
+.mensagem {
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -103,7 +110,7 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;    
+    gap: 4px;
 }
 
 .mensagem.erro {
@@ -113,8 +120,8 @@ footer p {
 }
 
 .mensagem.sucesso {
-    background-color: #eafaf1; 
-    color: #27ae60;           
+    background-color: #eafaf1;
+    color: #27ae60;
     border-color: #d4efdf;
 }
 
@@ -125,30 +132,40 @@ footer p {
 }
 
 
-/* LOGIN PAGE ========================================================= */
-.login-page main {
+
+/* FORMULARIO PAGE ========================================================= */
+.formulario-page main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
 
-.login-page .form-container {    
+.formulario-page .form-container {
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 480px;   
+    max-width: 480px;
 }
 
-.login-page .input-group {
+.formulario-page .input-group {
     display: flex;
     flex-direction: column;
     gap: 4px;
     margin-bottom: 20px;
 }
 
-.btn-entrar {
+.formulario-page a.link {
+    display: block;
+    text-align:
+        center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #6200ee;
+}
+
+.formulario-page .botao-principal {
     width: 100%;
     padding: 12px;
     background-color: #6200ee;
@@ -159,18 +176,8 @@ footer p {
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     transition: background 0.3s ease;
-    margin-bottom: 12px;
 }
 
-.btn-entrar:hover {
+.formulario-page .botao-principal:hover {
     background-color: #4b00b8;
 }
-
-.login-page a {
-    font-size: 0.9rem; 
-    text-decoration: underline;
-    text-align: center;
-    display: block;
-}
-
-/* ======================================================== */

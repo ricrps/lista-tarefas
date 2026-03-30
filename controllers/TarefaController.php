@@ -83,10 +83,37 @@ class TarefaController
             $stmt->bindValue(':id', $id);
             $stmt->bindValue(':u', $usuario);
             if ($stmt->execute()) {
-                $_SESSION['sucesso'] = "Tarefa removida com sucesso!";
+                $_SESSION['sucesso'] = "Tarefa excluída com sucesso!";
             }
         } catch (Exception $ex) {
             $_SESSION['erro'] = "Erro ao excluir tarefa: " . $ex->getMessage();
+        } finally {
+            header("Location: ../index.php");
+            exit;
+        }
+    }
+
+    public function mudarStatus() {
+        try {
+            $id = $_GET['id'];
+            $status = $_GET['status'];
+            $usuario = $_SESSION['usuario_email'];
+
+            $status = !$status;
+
+            $sql = "UPDATE tarefas SET concluida = :status WHERE id = :id AND usuario = :usuario";
+            $stmt = $this->db->prepare($sql);
+            
+            $stmt->bindValue(':status', $status, PDO::PARAM_INT);
+            $stmt->bindValue(':id', $id);
+            $stmt->bindValue(':usuario', $usuario);
+            
+            if ($stmt->execute()) {
+                $_SESSION['sucesso'] = $status ? "Tarefa concluída!" : "Tarefa não concluída!";
+            }
+            
+        } catch (Exception $ex) {
+            $_SESSION['erro'] = "Erro ao editar tarefa: " . $ex->getMessage();
         } finally {
             header("Location: ../index.php");
             exit;
@@ -101,4 +128,8 @@ if ($acao === 'salvar') {
     $controller->salvar();
 } elseif ($acao === 'excluir') {
     $controller->excluir();
+} elseif ($acao === 'listar') {
+    $controller->listar();
+} elseif ($acao === 'status') {
+    $controller->mudarStatus();
 }

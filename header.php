@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <nav>
             <div class="links">
                 <a href="index.php">Home</a>
-                <a href="tarefa-nova.php">Cadastrar Tarefa</a>
+                <a href="nova-tarefa.php">Nova Tarefa</a>
             </div>
 
             <div class="usuario">

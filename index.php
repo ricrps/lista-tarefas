@@ -65,7 +65,7 @@ $listaTarefas = $controller->listar();
                         </div>
 
                         <div class="acoes">
-                            <a href="editar_tarefa.php?id=<?php echo $tarefa['id']; ?>" title="Editar">
+                            <a href="editar-tarefa.php?id=<?php echo $tarefa['id']; ?>" title="Editar">
                                 <span class="material-symbols-outlined" style="color: #6200ee;">edit</span>
                             </a>
                             <a href="controllers/TarefaController.php?acao=excluir&id=<?php echo $tarefa['id']; ?>"

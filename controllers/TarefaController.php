@@ -31,7 +31,7 @@ class TarefaController
         $sql = "SELECT * FROM tarefas WHERE id = :id AND usuario = :usuario";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':u', $usuario);
+        $stmt->bindValue(':usuario', $usuario);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -43,22 +43,26 @@ class TarefaController
                 $id     = $_POST['id'] ?? null;
                 $titulo = $_POST['titulo'];
                 $data   = $_POST['data'];
-                $usuario   = $_SESSION['usuario_email'];
+                $usuario   = $_SESSION['usuario_email'];                
+                
+                $concluida = isset($_POST['concluida']) ? 1 : 0;
 
-                $tarefa = TarefaFactory::criar($titulo, $data, $usuario, 0, $id);
+                $tarefa = TarefaFactory::criar($titulo, $data, $usuario, $concluida, $id);
 
                 if ($id) {
-                    $sql = "UPDATE tarefas SET titulo = :titulo, data = :data WHERE id = :id AND usuario = :usuario";
+                    $sql = "UPDATE tarefas SET titulo = :titulo, data = :data, concluida = :concluida 
+                            WHERE id = :id AND usuario = :usuario";
                     $stmt = $this->db->prepare($sql);
                     $stmt->bindValue(':id', $tarefa->id);
                 } else {
-                    $sql = "INSERT INTO tarefas (titulo, data, usuario) VALUES (:titulo, :data, :usuario)";
+                    $sql = "INSERT INTO tarefas (titulo, data, concluida, usuario) VALUES (:titulo, :data, :concluida, :usuario)";
                     $stmt = $this->db->prepare($sql);
                 }
 
                 $stmt->bindValue(':titulo', $tarefa->titulo);
                 $stmt->bindValue(':data', $tarefa->data);
-                $stmt->bindValue(':usuario', $tarefa->usuario);
+                $stmt->bindValue(':usuario', $tarefa->usuario);                
+                $stmt->bindValue(':concluida', $tarefa->concluida, PDO::PARAM_INT);
 
                 if ($stmt->execute()) {
                     $_SESSION['sucesso'] = "Tarefa salva com sucesso!";

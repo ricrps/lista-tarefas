@@ -16,3 +16,14 @@ CREATE TABLE tarefas (
     usuario VARCHAR(100),
     FOREIGN KEY (usuario) REFERENCES usuarios(email) ON DELETE CASCADE
 );
+
+CREATE TABLE filmes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    genero VARCHAR(100),
+    ano INT,
+    sinopse TEXT,
+    assistido BOOLEAN DEFAULT FALSE,
+    usuario VARCHAR(255),
+    FOREIGN KEY (usuario) REFERENCES usuarios(email)
+);

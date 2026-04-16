@@ -7,8 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="container">
         <nav>
             <div class="links">
-                <a href="index.php">Home</a>
-                <a href="nova-tarefa.php">Nova Tarefa</a>
+                <a href="index.php">Tarefas</a>
+                <a href="filmes.php">Filmes</a>
             </div>
 
             <div class="usuario">

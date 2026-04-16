@@ -44,7 +44,7 @@ p {
     margin: 0;
 }
 
-.input-group input {
+.input-group input, .input-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -290,7 +290,8 @@ footer p {
 }
 
 .card-tarefa.concluida h4, 
-.card-tarefa.concluida p {
+.card-tarefa.concluida p,
+.card-tarefa.concluida small {
     text-decoration: line-through;
 }
 
@@ -333,4 +334,11 @@ footer p {
 .input-group input[readonly]:focus {
     outline: none;
     border-color: #e1d0f5;
+}
+
+p.nenhum-registro {
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
+    margin-top: 40px;
 }

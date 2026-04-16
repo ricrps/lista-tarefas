@@ -1,5 +1,6 @@
 <?php
 require_once 'controllers/AutenticacaoController.php';
+// Garante que apenas usuários logados acessem
 AutenticacaoController::verificarAcesso();
 ?>
 <!DOCTYPE html>
@@ -13,8 +14,7 @@ AutenticacaoController::verificarAcesso();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
-
-    <title>Nova Tarefa</title>
+    <title>Adicionar Filme</title>
 </head>
 
 <body class="formulario-page">
@@ -22,29 +22,39 @@ AutenticacaoController::verificarAcesso();
 
     <main class="container">
         <div class="form-container">
-            <h2>Cadastrar Tarefa</h2>
+            <h2>Cadastrar Filme</h2>
 
-            <form action="controllers/TarefaController.php?acao=salvar" method="POST">
+            <form action="controllers/FilmeController.php?acao=salvar" method="POST">
 
                 <div class="input-group">
-                    <label for="titulo">Tarefa</label>
-                    <input type="text" id="titulo" name="titulo" required placeholder="Ex: Fazer compras">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+
+                <div class="row" style="display: flex; gap: 15px;">
+                    <div class="input-group" style="flex: 2;">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" name="genero" placeholder="Drama, Ficção" required>
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label for="ano">Ano</label>
+                        <input type="number" id="ano" name="ano" min="1888" max="2099" required>
+                    </div>
                 </div>
 
                 <div class="input-group">
-                    <label for="data">Data</label>
-                    <input type="date" id="data" name="data" required>
+                    <label for="sinopse">Sinopse</label>
+                    <textarea id="sinopse" name="sinopse" rows="5"></textarea>
                 </div>
 
                 <div class="input-group checkbox">
-                    <input type="checkbox" id="concluida" name="concluida" value="1"
-                        <?php echo (isset($tarefa) && $tarefa['concluida']) ? 'checked' : ''; ?>>
-                    <label for="concluida">Concluída</label>
+                    <input type="checkbox" id="assistido" name="assistido" value="1">
+                    <label for="assistido">Assistido</label>
                 </div>
 
                 <button type="submit" class="botao-principal">Salvar</button>
 
-                <a class="link" href="index.php">
+                <a href="filmes.php" class="link">
                     <span class="material-symbols-outlined">arrow_back</span>
                     Voltar para a lista
                 </a>

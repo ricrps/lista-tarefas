@@ -1,11 +1,12 @@
 <?php
 require_once 'controllers/AutenticacaoController.php';
-require_once 'controllers/TarefaController.php';
+require_once 'controllers/FilmeController.php';
 
+// Garante que o usuário esteja logado
 AutenticacaoController::verificarAcesso();
 
-$controller = new TarefaController();
-$listaTarefas = $controller->listar();
+$controller = new FilmeController();
+$filmes = $controller->listar();
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -20,12 +21,13 @@ $listaTarefas = $controller->listar();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
-    <title>Lista de tarefas</title>
+    <title>Filmes</title>
 </head>
 
 <body>
     <?php include('header.php'); ?>
     <main class="container index">
+        <h2>Filmes</h2>
         <?php if (isset($_SESSION['sucesso'])): ?>
             <div class="mensagem sucesso">
                 <span class="material-symbols-outlined">check_circle</span>
@@ -42,48 +44,51 @@ $listaTarefas = $controller->listar();
             </div>
         <?php endif; ?>
 
-        <h2>Minhas Tarefas</h2>
-
         <div class="lista-tarefas">
-            <?php if (empty($listaTarefas)): ?>
-                <p class="nenhum-registro">Nenhuma tarefa encontrada.</p>
+            <?php if (empty($filmes)): ?>
+                <p class="nenhum-registro">Nenhum filme encontrado.</p>
             <?php else: ?>
-                <?php foreach ($listaTarefas as $tarefa): ?>
-                    <div class="card-tarefa <?php echo $tarefa['concluida'] ? 'concluida' : ''; ?>">
-
+                <?php foreach ($filmes as $filme): ?>
+                    <div class="card-tarefa <?php echo $filme['assistido'] ? 'concluida' : ''; ?>">
                         <div class="dados-tarefa">
                             <div class="check-container">
-                                <input type="checkbox"
-                                    class="checkbox-tarefa"
-                                    <?php echo $tarefa['concluida'] ? 'checked' : ''; ?>
-                                    onchange="window.location.href='controllers/TarefaController.php?acao=status&id=<?php echo $tarefa['id']; ?>&status=<?php echo $tarefa['concluida']; ?>'">
+                                <input type="checkbox" class="checkbox-tarefa"
+                                    <?php echo $filme['assistido'] ? 'checked' : ''; ?>
+                                    onchange="window.location.href='controllers/FilmeController.php?acao=status&id=<?php echo $filme['id']; ?>&status=<?php echo $filme['assistido']; ?>'">
                             </div>
-                            <div>
-                                <h4><?php echo htmlspecialchars($tarefa['titulo']); ?></h3>
-                                    <p><?php echo date('d/m/Y', strtotime($tarefa['data'])); ?></p>
+
+                            <div class="info-filme">
+                                <h4><?php echo htmlspecialchars($filme['titulo']); ?></h4>
+                                <small><?php echo htmlspecialchars($filme['genero']); ?> • <?php echo $filme['ano']; ?></small>
+
+                                <p class="sinopse-preview">
+                                    <?php
+                                    $sinopse = htmlspecialchars($filme['sinopse']);
+                                    echo (mb_strlen($sinopse) > 100) ? mb_substr($sinopse, 0, 100) . "..." : $sinopse;
+                                    ?>
+                                </p>
                             </div>
                         </div>
 
                         <div class="acoes">
-                            <a href="editar-tarefa.php?id=<?php echo $tarefa['id']; ?>" title="Editar">
-                                <span class="material-symbols-outlined" style="color: #6200ee;">edit</span>
+                            <a href="editar-filme.php?id=<?php echo $filme['id']; ?>" title="Editar">
+                                <span class="material-symbols-outlined">edit</span>
                             </a>
-                            <a href="controllers/TarefaController.php?acao=excluir&id=<?php echo $tarefa['id']; ?>"
-                                onclick="return confirm('Tem certeza que deseja excluir?')" title="Excluir">
+                            <a href="controllers/FilmeController.php?acao=excluir&id=<?php echo $filme['id']; ?>"
+                                title="Excluir"
+                                onclick="return confirm('Deseja realmente remover este filme?')">
                                 <span class="material-symbols-outlined" style="color: #b71c1c;">delete</span>
                             </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-
         </div>
 
-        <a href="nova-tarefa.php" class="botao-flutuante">
+        <a href="novo-filme.php" class="botao-flutuante" title="Adicionar Filme">
             <span class="material-symbols-outlined">add</span>
         </a>
     </main>
-
 
     <?php include('footer.php'); ?>
 </body>
